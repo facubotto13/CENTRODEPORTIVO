@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Turnos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<header class="header">
+    <div class="menu container">
+        <a href="#" class="logo">Logo</a>
+        <input type="checkbox" id="menu">
+        <label for="menu" class="no_display_en_desk">
+            <img src="images/menu.png" class="menu-icono" alt="">
+        </label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#"> Inicio</a></li>
+                <li><a href="#servicios"> Servicios</a></li>
+                <li><a href="#contacto"> Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="header-content container">
+        <div class="header-txt">
+            <h1>MARCA</h1>
+            <span>Centro deportivo</span>
+            <p>¡¡Hace tu evento con nosotros!!</p>
+        </div>
+        <div class="header-dir">
+            <div class="dir">
+                <h3>Dirección</h3>
+                <p>Dirección XXX</p>
+            </div>
+            <div class="dir">
+                <h3>Teléfono</h3>
+                <p>+54 9 (1234) 12345678</p>
+            </div>
+            <div class="dir">
+                <h3>Horario</h3>
+                <p>Todos los días a partir de las 15:00 horas</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="services container" id="servicios">
+    <div class="services-txt">
+        <h2>Nuestros servicios</h2>
+        <hr>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Voluptates a quis reiciendis! Cumque incidunt dignissimos, 
+            ab nobis maiores fugiat. Molestias excepturi dolorem natus 
+            saepe earum quaerat, amet molestiae eaque debitis?
+        </p>
+    </div>
+    <div class="services-group">
+        <div class="services-1">
+            <img src="images/futbol.png" alt="">
+            <h3>Fútbol</h3>
+            <p>
+                Canchas de fútbol 5 vs. 5 
+            </p>
+        </div>
+        <div class="services-1">
+            <img src="images/basquetbol-balon.png" alt="">
+            <h3>Básquet</h3>
+            <p>
+                Cancha de básquet 4 vs. 4
+            </p>
+        </div>
+        <div class="services-1">
+            <img src="images/NKHCBHE6OZAXVK63QGH4JZ324Q.png"alt="">
+            <h3>Espacio recreativo</h3>
+            <p>
+                Bar y fútbol codificado. 
+            </p>
+        </div>
+    </div>
+</main>
+
+<body>
+    <div class="form-container" id="contacto">
+        <h2>Agendar Turno</h2>
+        <form id="appointmentForm">
+            <label for="name">Deporte:</label>
+            <select id="sport" name="sport" required>
+                <option value="fútbol-5">Fútbol</option>
+                <option value="básquet">Básquet</option>
+            </select>
+            <label for="name">Nombre y Apellido:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="number">Teléfono:</label>
+            <input type="text" id="number" name="number" required>
+            <label for="date">Fecha:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Horarios:</label>
+            <select id="time" name="datetime" required>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+            </select>
+            <div class="checkbox-container">
+                <input type="checkbox" id="fixedTurn" name="fixedTurn">
+                <label for="fixedTurn">Establecer turno fijo</label>
+            </div>   
+            <input type="submit" value="Agendar">
+        </form>
+        <div id="confirmation"></div>
+    </div>
+    
+    <script>
+        // Función para manejar el envío del formulario
+        document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+            // Obtener los valores del formulario
+            var sport = document.getElementById("sport").value;
+            var name = document.getElementById("name").value;
+            var number = document.getElementById("number").value;
+            var date = document.getElementById("date").value;
+            var datetime = document.getElementById("time").value;
+            // Formatear la fecha en el estilo "día/mes/año"
+            var formattedDate = formatDate(date);
+            // Mostrar confirmación
+            document.getElementById("confirmation").innerHTML = "<p>Turno agendado para " + name + " en " + sport + " el " + formattedDate + " a las " + datetime + " horas. Contacto: " + number + ".</p>";
+            // Aquí podrías agregar código para enviar los datos a un servidor y almacenarlos en una base de datos
+        });
+
+        // Función para formatear la fecha en el estilo "día/mes/año"
+        function formatDate(date) {
+            var parts = date.split("-");
+            var day = parts[2];
+            var month = parts[1];
+            var year = parts[0];
+            return day + "/" + month + "/" + year;
+        }
+    </script>
+    <a href="https://wa.me/543493436045" class="btn-wsp" target="_blank">
+        <img src="images/wpp.webp" alt="WhatsApp">
+    </a>
+</body>
+</html>
